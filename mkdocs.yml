@@ -1,0 +1,8 @@
+site_name: MDC CHIME Projections
+repo_url: https://github.com/Rwilli5/SFCHIME
+
+site_name: SitePoint Documentation
+site_description: Description of the documentation
+theme: readthedocs
+pages:
+- ['index.md', 'Index']
