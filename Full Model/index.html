@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>About - MDC CHIME Projections</title>
+        <title>Full Model - MDC CHIME Projections</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
@@ -39,11 +39,11 @@
                             <li class="navitem">
                                 <a href="../1/" class="nav-link">About</a>
                             </li>
-                            <li class="navitem">
-                                <a href="../Full%20Model/" class="nav-link">Full Model</a>
-                            </li>
                             <li class="navitem active">
-                                <a href="./" class="nav-link">About</a>
+                                <a href="./" class="nav-link">Full Model</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../about/" class="nav-link">About</a>
                             </li>
                         </ul>
 
@@ -54,17 +54,17 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../Full%20Model/" class="nav-link">
+                                <a rel="prev" href="../1/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" class="nav-link disabled">
+                                <a rel="next" href="../about/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="https://github.com/Rwilli5/git/edit/master/docs/about.md" class="nav-link"><i class="fa fa-github"></i> Edit on GitHub</a>
+                                <a href="https://github.com/Rwilli5/git/edit/master/docs/Full Model.md" class="nav-link"><i class="fa fa-github"></i> Edit on GitHub</a>
                             </li>
                     </ul>
                 </div>
@@ -83,34 +83,211 @@
     
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
-            
-            <li class="nav-item" data-level="1"><a href="#about" class="nav-link">About</a>
-              <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#catgory-two" class="nav-link">catgory two</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="1"><a href="#conclusion" class="nav-link">Conclusion</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
         </ul>
     </div>
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="about">About</h1>
-<p>This is the struggle of my life</p>
-<h2 id="catgory-two">catgory two</h2>
-<p>The story of my life part 2 </p>
-<h1 id="conclusion">Conclusion</h1>
-<p>It was a struggle.</p>
-<p>'''
-a big code snippet
-'''</p></div>
+<pre><code class="python">#Import the libraries
+from functools import reduce
+from typing import Tuple, Dict, Any
+import pandas as pd
+import streamlit as st
+import numpy as np
+import altair as alt
+import matplotlib.pyplot as plt
+from math import floor
+from ggplot import *
+</code></pre>
+
+<pre><code class="python">#Hospital Parameters
+
+# Miami Dade County Population
+S_default = 2761581.0
+
+# Hospital Market Share
+Penn_market_share = 1.0
+
+# Currently Hospitalised Patients (at current hospital?)
+known_cases = 636.0
+current_hosp = known_cases
+
+# Currently Hospitalised Patients
+known_infections = 1000.0
+initial_infections = known_infections
+
+# Doubling Time
+doubling_time = 6.0
+
+# Social Distancing (% reduction in social contact)
+relative_contact_rate = 0.0
+</code></pre>
+
+<pre><code class="python">#Severity Parameters
+
+# Hospitalisation (% of total infections)
+hosp_rate = 0.05
+
+# ICU (% of total infections)
+icu_rate = 0.02
+
+# Ventilated (% of total infections)
+vent_rate = 0.01
+
+# Infectious Days
+recovery_days = 14.0
+
+# Average hospital length of stay (days)
+hosp_los = 7.0
+
+# Average ICU length of stay (days)
+icu_los = 9.0
+
+# Average length of stay on a ventilator (days)
+vent_los = 10.0
+</code></pre>
+
+<pre><code class="python"># Total Infections without accounting for undetected
+total_infections = current_hosp / Penn_market_share / hosp_rate
+print(total_infections)
+
+#Detection probabiltiy
+detection_prob = initial_infections / total_infections
+print(detection_prob)
+
+#Accounting for Detection
+Infct = initial_infections / detection_prob
+Susc, Infct, Recov = S_default - Infct, Infct, 0.0
+
+total_dead= 354
+print(total_dead)
+
+
+</code></pre>
+
+<pre><code>12720.0
+0.07861635220125786
+354
+</code></pre>
+<pre><code class="python">#Estimate of Total Infected Accounting for Detection Probability
+print(Infct)
+
+#Estimate of Total Infected minus deaths
+Infct2 = Infct- total_dead
+print (Infct2)
+
+</code></pre>
+
+<pre><code>12720.0
+12366.0
+</code></pre>
+<pre><code class="python">#Estmate of Total Succeptible
+print(Susc)
+
+#adjust for deaths
+Susc2= Susc- total_dead
+print(Susc2)
+</code></pre>
+
+<pre><code>2748861.0
+2748507.0
+</code></pre>
+<pre><code class="python"># Intrinsic Growth
+intrinsic_growth_rate = 2 ** (1 / doubling_time) - 1
+print(intrinsic_growth_rate)
+</code></pre>
+
+<pre><code>0.12246204830937302
+</code></pre>
+<pre><code class="python">#SIR Transition Rates
+type(Recov)
+print(Recov)
+
+#Gamma = Recovery Rate
+gamma = 1.0 / recovery_days
+#mean recovery rate, gamma, (in 1/days).
+print(gamma)
+
+
+#Beta = Infection Rate
+beta = (intrinsic_growth_rate + gamma) / Susc * (1.0 - relative_contact_rate)
+# Contact rate, beta
+# {rate based on doubling time} / {initial Susc}
+print(beta)
+
+#Mu = Death Rate 
+total_deaths = 63
+mu= total_deaths / Infct
+print(mu)
+</code></pre>
+
+<pre><code>0.0
+0.07142857142857142
+7.05348941754219e-08
+0.004952830188679245
+</code></pre>
+<pre><code class="python"># Reproduction Number
+r_t = beta / gamma * Susc 
+# Current Reproduction Number
+# r_t is r_0 after distancing
+print(r_t)
+
+#Reproductive Number Accounting for Contact
+r_naught = r_t / (1.0 - relative_contact_rate)
+# Initial Reproduction Number
+print(r_naught)
+</code></pre>
+
+<pre><code>2.7144686763312222
+2.7144686763312222
+</code></pre>
+<pre><code class="python"># Doubling Time
+doubling_time_t = 1.0 / np.log2(beta * Susc - gamma + 1.0) 
+# Current Doubling Time
+# doubling time after distancing
+print(doubling_time_t)
+
+# type(Recov)
+</code></pre>
+
+<pre><code>5.999999999999998
+</code></pre>
+<pre><code class="python">#Running the Model
+#Initializing Vars
+S = 2748861.0
+I = 12720.0
+R = 0
+D = 354
+steps = 100
+#Disease Parameters
+beta = 7.05348941754219e-08
+gamma = 0.07142857142857142
+mu = 0.004952830188679245
+history = pd.DataFrame({&quot;S&quot;: S, &quot;I&quot;: I, &quot;R&quot;: R, &quot;D&quot;: D}, index=[0])
+#Run sim loop
+history[&quot;step&quot;] = history.index
+plotData = pd.melt(history, id_vars=[&quot;step&quot;])
+ggplot(plotData, aes(x=&quot;step&quot;, y=&quot;value&quot;, color=&quot;variable&quot;))+geom_line()
+for step in range(1, steps):
+    newInf = floor(min(max(beta*I*S, 0), S))
+    newRec = floor(min(max(gamma*I, 0), I))
+    newDead = floor(min(max(mu*I, 0), I-newRec))
+    S = S - newInf
+    I = I + newInf - newRec - newDead
+    R = R + newRec
+    D = D + newDead
+    history = history.append(pd.DataFrame({&quot;S&quot;: S, &quot;I&quot;: I, &quot;R&quot;: R, &quot;D&quot;: D}, index=[step]))
+history[&quot;step&quot;] = history.index
+#Plot using Python port of ggplot
+plotData = pd.melt(history, id_vars=[&quot;step&quot;], value_vars=[&quot;S&quot;,&quot;I&quot;,&quot;R&quot;,&quot;D&quot;])
+ggplot(plotData, aes(x=&quot;step&quot;, y=&quot;value&quot;, color=&quot;variable&quot;))+geom_line()+xlab(&quot;Time Step&quot;)+ylab(&quot;# Hosts&quot;)
+</code></pre>
+
+<p><img alt="png" src="../output_10_0.png" /></p>
+<pre><code>&lt;ggplot: (7009080293)&gt;
+</code></pre>
+<pre><code class="python">
+</code></pre></div>
             </div>
         </div>
 
