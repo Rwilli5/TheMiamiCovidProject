@@ -62,6 +62,8 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#parameters">Parameters</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#severity-parameters">Severity Parameters</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#detection">Detection</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#sir-transition-rates">SIR Transition Rates</a>
@@ -74,7 +76,7 @@
                     </li>
                 </ul>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../about/">About</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../about/">FAQ</a>
                     </li>
                 </ul>
                 <ul>
@@ -117,6 +119,9 @@
             <div class="section">
               
                 <h1 id="sird-model">SIRD Model</h1>
+<p><strong><p style="text-align: center;">
+<img alt="target1.jpg" src="../images/target1.jpg" />
+</p></strong></p>
 <h2 id="import-the-libraries">Import the Libraries</h2>
 <pre><code class="python">#Import the libraries
 from functools import reduce
@@ -154,6 +159,7 @@ doubling_time = 6.0
 relative_contact_rate = 0.0
 </code></pre>
 
+<h2 id="severity-parameters">Severity Parameters</h2>
 <pre><code class="python">#Severity Parameters
 
 # Hospitalisation (% of total infections)
@@ -319,8 +325,6 @@ ggplot(plotData, aes(x=&quot;step&quot;, y=&quot;value&quot;, color=&quot;variab
 
 <h2 id="model-output">Model Output</h2>
 <p><img alt="png" src="../output_10_0.png" /></p>
-<pre><code>&lt;ggplot: (7009080293)&gt;
-</code></pre>
 <pre><code class="python">
 </code></pre>
               
@@ -330,7 +334,7 @@ ggplot(plotData, aes(x=&quot;step&quot;, y=&quot;value&quot;, color=&quot;variab
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../about/" class="btn btn-neutral float-right" title="About">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../about/" class="btn btn-neutral float-right" title="FAQ">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../1/" class="btn btn-neutral" title="Who We Are"><span class="icon icon-circle-arrow-left"></span> Previous</a>
