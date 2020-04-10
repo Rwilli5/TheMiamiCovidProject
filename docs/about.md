@@ -1,15 +1,24 @@
-# About
+# FAQ
 
-This is the struggle of my life
+Commonly asked questions
 
-##catgory two 
+##When will the epidemic peak?
 
-The story of my life part 2 
+IDK
+
+##When will it peak for MDC?
+
+IDK
+
+##What are the differences between the models?
+
+IDK
+
+## When can we go back to work?
+
+IDK
+
 
 #Conclusion
 
-It was a struggle.
-
-'''
-a big code snippet
-'''
+We dont know
