@@ -1,5 +1,10 @@
 site_name: The Miami-Dade COVID Project
+nav: 
+    - Home: index.md
+    - Reports: report.md
+    - FAQ: faq.md
+    - About: about_us.md
+    - SIRD Details: SIRD_Model.md
 repo_url: https://github.com/Rwilli5/git
 
-theme:
-  name: readthedocs
+theme: readthedocs
