@@ -14,3 +14,6 @@ mkdocs serve
 
 # Now we can build the .html files
 mkdocs build
+
+# We then simply deploy these changes to GitHub
+mkdocs gh-deploy
