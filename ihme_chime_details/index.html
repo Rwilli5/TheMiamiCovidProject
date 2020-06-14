@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Today's Model Report - The Miami-Dade COVID Project</title>
+  <title>IHME and CHIME Details - The Miami-Dade COVID Project</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Today's Model Report";
-    var mkdocs_page_input_path = "report.md";
+    var mkdocs_page_name = "IHME and CHIME Details";
+    var mkdocs_page_input_path = "ihme_chime_details.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -63,8 +63,18 @@
                     <li class="toctree-l1"><a class="reference internal" href="../test/">Miami-Dade County COVID-19 Trajectory</a>
                     </li>
                 </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../ihme_chime_details/">IHME and CHIME Details</a>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">IHME and CHIME Details</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#what-are-the-differences-between-the-ihme-and-chime-models">What are the differences between the IHME and CHIME models?</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#imhe">IMHE</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#chime">CHIME</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
                     </li>
                 </ul>
       </div>
@@ -88,10 +98,10 @@
     
       
     
-    <li>Today's Model Report</li>
+    <li>IHME and CHIME Details</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/Rwilli5/MiamiCovidProject/edit/master/docs/report.md"
+        <a href="https://github.com/Rwilli5/MiamiCovidProject/edit/master/docs/ihme_chime_details.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -102,28 +112,27 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="todays-model-report">Today's Model Report</h1>
-<p><strong><p style="text-align: center;">
-<img alt="join.jpg" src="../images/join.jpg" />
-</p></strong></p>
-<h2 id="chime-model">CHIME Model</h2>
-<p><strong><p style="text-align: center;">
-<img alt="OWF-Logo-Color.jpg" src="../images/OWF-Logo-Color.jpg" />
-</p></strong></p>
-<p><strong><p style="text-align: center;">
-Example Image (<a href="../images/OWF-Logo-Color.jpg">see full-size image</a>)
-</p></strong></p>
-<h2 id="ihme-model">IHME Model</h2>
-<p><strong><p style="text-align: center;">
-<img alt="OWF2-Logo-Color.jpg" src="../images/OWF2-Logo-Color.jpg" />
-</p></strong></p>
-<p><strong><p style="text-align: center;">
-Example Image (<a href="../images/OWF2-Logo-Color.jpg">see full-size image</a>)
-</p></strong></p>
+                <h1 id="comparing-the-ihme-and-chime-models">Comparing the IHME and CHIME Models</h1>
+<h2 id="what-are-the-differences-between-the-ihme-and-chime-models">What are the differences between the IHME and CHIME models?</h2>
+<p>Both models were developed to help health care systems anticipate the number of people who will need to be hospitalized, need intensive care unit care and need ventilation.  </p>
+<h3 id="imhe">IMHE</h3>
+<p>The University of Washington’s Institute of Health Metrics and Evaluation (IHME) model uses historical data on the course of changes in rates of death principally from outbreaks in other countries such as China and Italy to predict how many deaths will occur in the future. The advantage of the model is that we have much better data about the current number of deaths than we do about the number of infections although it is still likely that some deaths are not correctly attributed to COVID-19, resulting in undercounts. The disadvantage of the model is that it assumes that our experience will be similar to that seen historically in other countries.</p>
+<p>Institute for Health Metrics and Evaluation. IHME COVID-19 Model FAQ’s. Available at: http://www.healthdata.org/covid/faqs#differences%20in%20modeling. 4/12/2020</p>
+<h3 id="chime">CHIME</h3>
+<p>Penn Medicine’s COVID-19 Hospital Impact (CHIME) model is based on the SIR (susceptible-infected-recovered) model says at any time people in the population are susceptible to (not yet immune), infected with, or recovered from the disease.  CHIME uses the SIR model to project the number of new hospitalizations over time. A disadvantage of the model is that it assumes that people mix uniformly within a population. To obtain local projections, the number of local hospitalizations is needed as well as the date of the first COVID-19 hospitalization. Hospitalization data is more likely to be accurate than the number of COVID-19 infections; however, the diagnosis of some people who are hospitalized with COVID-19 may be delayed for several days due to testing delays. These people would not show up as being hospitalized for COVID-19 until their test result is confirmed.</p>
+<p>Penn Medicine. The CHIME Model https://code-for-philly.gitbook.io/chime/what-is-chime/sir-modeling
+4/12/2020</p>
               
             </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../test/" class="btn btn-neutral" title="Miami-Dade County COVID-19 Trajectory"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
@@ -148,6 +157,8 @@ Example Image (<a href="../images/OWF2-Logo-Color.jpg">see full-size image</a>)
       
           <a href="https://github.com/Rwilli5/MiamiCovidProject/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
+      
+        <span><a href="../test/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
     </span>
